@@ -1,9 +1,15 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"sort"
 )
+
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
 
 func add(x int, y int) int {
 	return x + y
@@ -24,6 +30,9 @@ func order(x, y, z int) (int, int, int) {
 func main() {
 	// fmt.Println(add(42, 13))
 	// fmt.Println(subtract(13, 42))
-	x, y, z := order(3, 2, 4)
-	fmt.Println(x, y, z)
+	// x, y, z := order(3, 2, 4)
+	// fmt.Println(x, y, z)
+	// fmt.Println(split(17))
+	// another()
+	basicTypes()
 }
