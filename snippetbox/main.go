@@ -8,12 +8,16 @@ import (
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
+	// use the Header().Add() method to add a 'Server: Go' header to
+	// the response header map. The first parameter is the header name,
+	// the second parameter is the header value
+	w.Header().Add("Server", "Go")
 	w.Write([]byte("Hello from Snippetbox"))
 }
 
 // add a snippetView handler function
 func snippetView(w http.ResponseWriter, r *http.Request) {
-	// extract the value of the id wildcard from the request using r.PathValue()
+	// extract the value of the id wild card from the request using r.PathValue()
 	// and try to convert it to an integer using the strconv.Atoi() function. If
 	// it can't be converted to an integer, or the value is less than 1, we return
 	// a 404 page not found response
@@ -23,8 +27,9 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	msg := fmt.Sprintf("Display a specific snippet with ID %d...", id)
-	w.Write([]byte(msg))
+	// msg := fmt.Sprintf("Display a specific snippet with ID %d...", id)
+	// w.Write([]byte(msg))
+	fmt.Fprintf(w, "Display a specific snippet with ID %d...", id)
 }
 
 // add a snippetCreate handler function
@@ -34,6 +39,9 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 
 // add a snippetCreatePost handler function
 func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
+	// use the w.WriteHeader() method to send a 201 status code.
+	w.WriteHeader(http.StatusCreated)
+	// then w.Write() method write the response body
 	w.Write([]byte("Save a new snippet..."))
 }
 
